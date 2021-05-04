@@ -57,48 +57,57 @@ const questions = [{
     ];
 
 const generateReadMEFile = (answers) =>{
-    return `#${answers.title}
+    return `# ${answers.title}
+    
+## Description
+\`\`\`${answers.description}\`\`\`
 
-    ## Description
-    \```${answers.description}\```
-    
-    ## Table of Contents
-        - [Installation](#installation)
-        - [Usage](#usage)
-        - [Contributing](#contributing)
-        - [License](#license)
-        - [Features](#features)
-        - [Got_Any_Questions](#got_Any_Questions)
-    
-    ## Installation
-    \```${answers.installation}\```
-    
-    ## Usage
-    \```${answers.usage}\```
-    
-    ## Contributing
-    \```${answers.contribute}\```
-    
-    ## Tests
-    \```${answers.tests}\```
-    
-    ## License
-    \```${answers.licence}\```
-    
-    ## Features
-    \```${answers.features}\```
-    
-    ## Got any questions
-    Feel free to reach me through
-    ${answers.email}
-    https://github.com/${answers.githubUsername}`;
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Features](#features)
+- [Got_Any_Questions](#Got_Any_Questions)
+
+## Installation
+\`\`\`${answers.installation}\`\`\`
+
+## Usage
+\`\`\`${answers.usage}\`\`\`
+
+## Contributing
+\`\`\`${answers.contribute}\`\`\`
+
+## Tests
+\`\`\`${answers.tests}\`\`\`
+
+## License
+\`\`\`${answers.licence}\`\`\`
+
+## Features
+\`\`\`${answers.features}\`\`\`
+
+## Got_Any_Questions
+Feel free to reach me through
+${answers.email}
+https://github.com/${answers.githubUsername}`;    
 }
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+//function to write README file
 
-// TODO: Create a function to initialize app
-function init() {}
+
+// function to initialize app
+function init() {
+    inquirer.prompt(questions)
+    .then((answers) => {
+        const readMEPageContent = generateReadMEFile(answers);
+    
+        fs.writeFile('SampleREADME.md', readMEPageContent, (err) =>
+          err ? console.log(err) : console.log('Successfully created README.md!')
+        );
+      });
+}
 
 // Function call to initialize app
 init();
