@@ -67,15 +67,18 @@ const licenceBadges = {
 }
 
 const generateReadMEFile = (answers) =>{
-    return `# ${(answers.title.trim() === "") ? 'N/A': answers.title.trim() }
+    const licence = answers.licence.trim();
+    return `# ${((answers.title.trim() === "") ? 'N/A': answers.title.trim())} 
     
- ${(answers.description.trim() === "") ? '': '## Description\n\`\`\`'+answers.description.trim()+'\`\`\`'}
+${'![Licence]('+licenceBadges[licence][0]+'.png)'}    
+
+${(answers.description.trim() === "") ? '': '## Description\n\`\`\`'+answers.description.trim()+'\`\`\`'}
 
 ## Table of Contents
 ${(answers.installation.trim() === "") ? '': '- [Installation](#installation)'}
 ${(answers.usage.trim() === "") ? '': '- [Usage](#usage)'}
 ${(answers.contribute.trim() === "") ? '': '- [Contributing](#contributing)'}
-${(answers.licence.trim() === "") ? '': '- [License](#license)'}
+- [License](#license)
 ${(answers.features.trim() === "") ? '': '- [Features](#features)'}
 ${((answers.email.trim() === "") && (answers.githubUsername.trim() === ""))? '':'- [Got_Any_Questions](#Got_Any_Questions)'}
 
@@ -87,7 +90,7 @@ ${(answers.contribute.trim() === "") ? '': '## Contributing\n\`\`\`'+answers.con
 
 ${(answers.tests.trim() === "") ? '': '## Tests\n\`\`\`'+answers.tests.trim()+'\`\`\`'} 
 
-${(answers.licence.trim() === "") ? '': '## License\n\`\`\`'+answers.licence.trim()+'\`\`\`'} 
+## License\n\`\`\`${licence}\`\`\`
 
 ${(answers.features.trim() === "") ? '': '## Features\n\`\`\`'+answers.features.trim()+'\`\`\`'} 
 
