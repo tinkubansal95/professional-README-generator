@@ -21,7 +21,7 @@ const questions = [{
         {
             type: 'input',
             name: 'usage',
-            message: 'Please provide instructions and examples for use:',
+            message: 'Please provide examples for use:',
         },
         {
             type: 'input',
@@ -57,45 +57,33 @@ const questions = [{
     ];
 
 const generateReadMEFile = (answers) =>{
-    return `# ${answers.title}
+    return `# ${(answers.title.trim() === "") ? 'N/A': answers.title.trim() }
     
-## Description
-\`\`\`${answers.description}\`\`\`
+ ${(answers.description.trim() === "") ? '': '## Description\n\`\`\`'+answers.description.trim()+'\`\`\`'}
 
 ## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Features](#features)
-- [Got_Any_Questions](#Got_Any_Questions)
+${(answers.installation.trim() === "") ? '': '- [Installation](#installation)'}
+${(answers.usage.trim() === "") ? '': '- [Usage](#usage)'}
+${(answers.contribute.trim() === "") ? '': '- [Contributing](#contributing)'}
+${(answers.licence.trim() === "") ? '': '- [License](#license)'}
+${(answers.features.trim() === "") ? '': '- [Features](#features)'}
+${((answers.email.trim() === "") && (answers.githubUsername.trim() === ""))? '':'- [Got_Any_Questions](#Got_Any_Questions)'}
 
-## Installation
-\`\`\`${answers.installation}\`\`\`
+${(answers.installation.trim() === "") ? '': '## Installation\n\`\`\`'+answers.installation.trim()+'\`\`\`'} 
 
-## Usage
-\`\`\`${answers.usage}\`\`\`
+${(answers.usage.trim() === "") ? '': '## Usage\n\`\`\`'+answers.usage.trim()+'\`\`\`'} 
 
-## Contributing
-\`\`\`${answers.contribute}\`\`\`
+${(answers.contribute.trim() === "") ? '': '## Contributing\n\`\`\`'+answers.contribute.trim()+'\`\`\`'} 
 
-## Tests
-\`\`\`${answers.tests}\`\`\`
+${(answers.tests.trim() === "") ? '': '## Tests\n\`\`\`'+answers.tests.trim()+'\`\`\`'} 
 
-## License
-\`\`\`${answers.licence}\`\`\`
+${(answers.licence.trim() === "") ? '': '## License\n\`\`\`'+answers.licence.trim()+'\`\`\`'} 
 
-## Features
-\`\`\`${answers.features}\`\`\`
+${(answers.features.trim() === "") ? '': '## Features\n\`\`\`'+answers.features.trim()+'\`\`\`'} 
 
-## Got_Any_Questions
-Feel free to reach me through
-${answers.email}
-https://github.com/${answers.githubUsername}`;    
+${((answers.email.trim() === "") && (answers.githubUsername.trim() === ""))? '': '## Got_Any_Questions\nFeel free to reach me through\n'+((answers.email.trim() === "") ? '': answers.email.trim())+'\n'+((answers.githubUsername.trim() === "") ? '': '\nhttps://github.com/'+answers.githubUsername.trim())}
+`;
 }
-
-//function to write README file
-
 
 // function to initialize app
 function init() {
@@ -104,7 +92,7 @@ function init() {
         const readMEPageContent = generateReadMEFile(answers);
     
         fs.writeFile('SampleREADME.md', readMEPageContent, (err) =>
-          err ? console.log(err) : console.log('Successfully created README.md!')
+          err ? console.log(err) : console.log('Successfully created Sample README.md!')
         );
       });
 }
