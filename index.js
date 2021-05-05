@@ -56,6 +56,16 @@ const questions = [{
         },
     ];
 
+const licenceBadges = {
+    'MIT License' : ['https://img.shields.io/badge/Licence-MIT-green','A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.'],
+    'GNU GPLv3' : ['https://img.shields.io/badge/Licence-GNU%20GPLv3-yellowgreen','Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.'],
+    'Apache License 2.0' : ['https://img.shields.io/badge/Licence-Apache%202.0-brightgreen','A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.'],
+    'GNU AGPLv3' : ['https://img.shields.io/badge/Licence-GNU%20AGPLv3-brightgreen','Permissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.'],
+    'Mozilla Public License 2.0' : ['https://img.shields.io/badge/Licence-Mozilla%20Public%202.0-green','Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work.'],
+    'Boost Software License 1.0' : ['https://img.shields.io/badge/Licence-Boost%20Software%201.0-yellowgreen','A simple permissive license only requiring preservation of copyright and license notices for source (and not binary) distribution. Licensed works, modifications, and larger works may be distributed under different terms and without source code.'],
+    'The Unlicense' : ['https://img.shields.io/badge/Licence-The%20Unlicense-brightgreen','A license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.'],
+}
+
 const generateReadMEFile = (answers) =>{
     return `# ${(answers.title.trim() === "") ? 'N/A': answers.title.trim() }
     
